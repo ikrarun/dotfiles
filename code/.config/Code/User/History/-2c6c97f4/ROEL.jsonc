@@ -1,0 +1,182 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 20,
+  "spacing": 2,
+  "exclusive": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris", "clock"],
+  "modules-right": [
+    "privacy",
+    "pulseaudio",
+    "tray",
+    "custom/notification",
+    "battery",
+    "custom/power"
+  ],
+
+  "bluetooth": {
+    "format": "{icon}",
+    "format-icons": {
+      "enabled": "",
+      "disabled": ""
+    }
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}% {time} ",
+    "format-icons": ["󰂎","󰁺", "󰁻", "󰁼", "󰁽", "󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+    "max-length": 25
+  },
+  "power-profiles-daemon": {
+    "format": " {icon} ",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "custom/spotify": {
+    "format": " { }",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor"
+  },
+
+  "mpris": {
+    "player": "spotify",
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": {
+      "paused": ""
+    },
+    "player-icons": {
+      "default": ""
+    }
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+    "show-special": true,
+    "special-visible-only": true
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    // "icon": true,
+    "icon-size": 12,
+    "max-length": 30, // 👈 Add this line
+    "rewrite": {
+      // Browsers
+      ".* - Mozilla Firefox": "Firefox",
+      ".* - Google Chrome": "Chrome",
+      ".* - Chromium": "Chromium",
+
+      // Popular websites
+      ".* - YouTube.*": "YouTube",
+      ".* - Gmail.*": "Gmail",
+      ".* - ChatGPT.*": "ChatGPT",
+      ".* - Google Drive.*": "Drive",
+      ".* - Google Docs.*": "Docs",
+      ".* - Google Calendar.*": "Calendar",
+      ".* - Stack Overflow.*": "StackOverflow",
+      ".* - Reddit.*": "Reddit",
+      ".* - Twitter.*": "Twitter",
+      ".* - Facebook.*": "Facebook",
+
+      // Common apps
+      ".* - Visual Studio Code": "VS Code",
+      ".* - Spotify.*": "Spotify",
+      ".* - Discord.*": "Discord",
+      ".* - Slack.*": "Slack",
+
+      // General useful shortcuts
+      ".* - Terminal.*": "Terminal",
+      ".* - Alacritty.*": "Terminal",
+      ".* - Thunderbird.*": "Mail",
+      ".* - LibreOffice Writer.*": "LibreWriter",
+
+      // Hyprland and Waybar related
+      ".*Hyprland.*": "Hyprland",
+      ".*Waybar.*": "Waybar",
+
+      // Generic cleanup for long titles with dashes
+      "^(.*?) - .*": "$1"
+    }
+  },
+
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 5
+  },
+
+  "clock": {
+    "format": "{:%a, %B %d, %Y (%R)}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon}{volume}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/sep": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻"
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false
+  }
+}

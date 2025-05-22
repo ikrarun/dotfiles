@@ -1,0 +1,17 @@
+{
+  "security.workspace.trust.untrustedFiles": "open",
+  "git.openRepositoryInParentFolders": "never",
+  "files.autoSave": "afterDelay",
+  "editor.fontFamily": "JetBrains Mono, Noto Color Emoji, monospace",
+  "editor.fontLigatures": true,
+  "[jsonc]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

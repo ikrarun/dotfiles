@@ -1,0 +1,6 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.openRepositoryInParentFolders": "never",
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'Fira Code', 'monospace', monospace"
+}

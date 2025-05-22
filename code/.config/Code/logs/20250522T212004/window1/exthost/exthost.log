@@ -1,0 +1,32 @@
+2025-05-22 21:20:06.089 [info] Extension host with pid 13313 started
+2025-05-22 21:20:06.285 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-05-22 21:20:06.315 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-05-22 21:20:06.465 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-05-22 21:20:06.481 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-05-22 21:20:06.534 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-05-22 21:20:06.651 [info] Eager extensions activated
+2025-05-22 21:20:06.685 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.688 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.707 [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.777 [info] ExtensionService#_doActivateExtension naumovs.color-highlight, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.793 [info] ExtensionService#_doActivateExtension rvest.vs-code-prettier-eslint, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.801 [info] ExtensionService#_doActivateExtension SeyyedKhandon.firacode, startup: false, activationEvent: 'onStartupFinished'
+2025-05-22 21:20:06.805 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-05-22 21:20:06.817 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-05-22 21:20:06.881 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-05-22 21:20:11.555 [info] Extension host terminating: renderer closed the MessagePort
+2025-05-22 21:20:11.587 [error] An error occurred when deactivating the extension 'SeyyedKhandon.firacode':
+2025-05-22 21:20:11.590 [error] TypeError: Cannot read properties of undefined (reading 'extension')
+	at deactivateFiraCode (/home/arun/.vscode/extensions/seyyedkhandon.firacode-2.2.2/out/util.js:53:27)
+	at Object.deactivate (/home/arun/.vscode/extensions/seyyedkhandon.firacode-2.2.2/out/extension.js:25:35)
+	at PJ.eb (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:11724)
+	at file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:9874
+	at Array.map (<anonymous>)
+	at PJ.$ (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:9862)
+	at PJ.terminate (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:10105)
+	at v2.terminate (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:124:1434)
+	at us (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:5702)
+	at MessagePortMain.<anonymous> (file:///opt/visual-studio-code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:2249)
+	at MessagePortMain.emit (node:events:524:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2025-05-22 21:20:11.592 [info] Extension host with pid 13313 exiting with code 0

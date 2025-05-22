@@ -1,0 +1,7 @@
+configuration {
+    font: "Fira Code 12";
+}
+
+window {
+    background-color: #222222;
+}
