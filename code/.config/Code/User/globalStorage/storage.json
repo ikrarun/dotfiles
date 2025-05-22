@@ -4,11 +4,12 @@
     "telemetry.devDeviceId": "c690d10b-d147-423d-bdde-2cdb12de0df9",
     "backupWorkspaces": {
         "workspaces": [],
-        "folders": [],
-        "emptyWindows": [
+        "folders": [
             {
-                "backupFolder": "1747922856329"
-            },
+                "folderUri": "file:///home/arun/dotfiles"
+            }
+        ],
+        "emptyWindows": [
             {
                 "backupFolder": "1747930340295"
             }
@@ -16,20 +17,22 @@
     },
     "windowControlHeight": 35,
     "profileAssociations": {
-        "workspaces": {},
+        "workspaces": {
+            "file:///home/arun/dotfiles": "__default__profile__"
+        },
         "emptyWindows": {
-            "1747922856329": "__default__profile__",
             "1747930340295": "__default__profile__"
         }
     },
     "windowsState": {
         "lastActiveWindow": {
-            "backupPath": "/home/arun/.config/Code/Backups/1747930340295",
+            "folder": "file:///home/arun/dotfiles",
+            "backupPath": "/home/arun/.config/Code/Backups/4141d5988f2c037fb89020aacc09ff23",
             "uiState": {
                 "mode": 1,
-                "x": 14,
+                "x": 967,
                 "y": 50,
-                "width": 1892,
+                "width": 939,
                 "height": 1016
             }
         },
@@ -59,10 +62,22 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 35,
             "activityBarWidth": 48,
-            "sideBarWidth": 0,
+            "sideBarWidth": 235,
             "auxiliarySideBarWidth": 0,
             "statusBarHeight": 22,
             "windowBorder": false
+        }
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "sideBarWidth": 235,
+            "auxiliaryBarWidth": 300,
+            "workspaces": {
+                "a430630a7f4b92cfe98ec4198885c1c5": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                }
+            }
         }
     }
 }
