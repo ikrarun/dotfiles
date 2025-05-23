@@ -7,7 +7,8 @@
 
 /* Remove unnecessary margins/paddings */
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.805);
+  background-color: rgba(0, 0, 0, 0.226);
+  color: black;
 
 }
 
@@ -15,6 +16,7 @@ window#waybar {
 #workspaces button {
   border-radius: 0; /* Remove rounded corners */
   background-color: transparent;
+  color: #1e1e2e;
 }
 
 /* Hover state for workspaces */
@@ -24,7 +26,8 @@ window#waybar {
 
 /* Active workspace state */
 #workspaces button.active {
-  background-color: #1e1e2e;
+  background-color: rgba(186, 155, 171, 0.8);
+  color: rgb(65, 58, 58)
 }
 
 /* Urgent workspace state */
@@ -50,7 +53,8 @@ window#waybar {
 }
 
 #custom-power {
-  color: #f38ba8;
+  color: #e40303;
+  margin-right: 10px;
 }
 
 /* Tooltip styling */
@@ -64,7 +68,6 @@ button {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  padding: 0 4px; /* Adjust padding */
 }
 
 /* Hover effect for buttons */
