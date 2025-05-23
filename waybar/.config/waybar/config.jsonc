@@ -11,6 +11,8 @@
   "modules-right": [
     "privacy",
     "pulseaudio",
+    "microphone",
+    "brightness",
     "tray",
     "custom/notification",
     "battery",
@@ -24,6 +26,7 @@
       "disabled": ""
     }
   },
+
   "battery": {
     "interval": 60,
     "states": {
@@ -34,7 +37,6 @@
     "format-icons": ["󰂎","󰁺", "󰁻", "󰁼", "󰁽", "󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
     "max-length": 25
   },
- 
 
   "custom/spotify": {
     "format": " { }",
@@ -70,16 +72,12 @@
 
   "hyprland/window": {
     "format": "{title}",
-    // "icon": true,
     "icon-size": 12,
-    "max-length": 30, // 👈 Add this line
+    "max-length": 30,
     "rewrite": {
-      // Browsers
       ".* - Mozilla Firefox": "Firefox",
       ".* - Google Chrome": "Chrome",
       ".* - Chromium": "Chromium",
-
-      // Popular websites
       ".* - YouTube.*": "YouTube",
       ".* - Gmail.*": "Gmail",
       ".* - ChatGPT.*": "ChatGPT",
@@ -90,24 +88,16 @@
       ".* - Reddit.*": "Reddit",
       ".* - Twitter.*": "Twitter",
       ".* - Facebook.*": "Facebook",
-
-      // Common apps
       ".* - Visual Studio Code": "VS Code",
       ".* - Spotify.*": "Spotify",
       ".* - Discord.*": "Discord",
       ".* - Slack.*": "Slack",
-
-      // General useful shortcuts
       ".* - Terminal.*": "Terminal",
       ".* - Alacritty.*": "Terminal",
       ".* - Thunderbird.*": "Mail",
       ".* - LibreOffice Writer.*": "LibreWriter",
-
-      // Hyprland and Waybar related
       ".*Hyprland.*": "Hyprland",
       ".*Waybar.*": "Waybar",
-
-      // Generic cleanup for long titles with dashes
       "^(.*?) - .*": "$1"
     }
   },
@@ -140,22 +130,48 @@
 
   "pulseaudio": {
     "format": "{icon}{volume}%",
-    "format-muted": " muted",
+    "format-muted": "<span style='color:#ff5555;'>🔇 muted</span>",
     "format-icons": {
-      "headphone": "",
-      "default": [" ", " ", " "]
+      "headphone": "🎧",
+      "default": ["🔈", "🔉", "🔊", "📢"]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
   },
+
+  "microphone": {
+    "format": "{icon}",
+    "format-muted": "<span style='color:#ff5555;'>🔇</span>",
+    "format-icons": {
+      "muted": "🔇",
+      "default": "🎤"
+    },
+    "on-click": "~/.config/waybar/scripts/mic-toggle.sh"
+  },
+
+  "brightness": {
+    "format": "{icon} {percentage}%",
+    "format-icons": {
+      "default": "☀️"
+    },
+    "on-click": "brightnessctl set 10%+",
+    "on-click-right": "brightnessctl set 10%-",
+    "scroll-up": "brightnessctl set +5%",
+    "scroll-down": "brightnessctl set 5%-"
+  },
+
   "custom/sep": {
     "format": "|",
     "tooltip": false
   },
+
   "custom/power": {
     "tooltip": false,
     "on-click": "wlogout -p layer-shell &",
     "format": "⏻"
   },
+
   "custom/notification": {
     "escape": true,
     "exec": "swaync-client -swb",
