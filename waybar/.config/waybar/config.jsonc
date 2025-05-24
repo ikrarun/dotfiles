@@ -7,9 +7,10 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["mpris", "clock"],
+  "modules-center": ["cava","idle_inhibitor", "mpris", "clock", "memory"],
   "modules-right": [
     "privacy",
+    "bluetooth",
     "pulseaudio",
     "microphone",
     "brightness",
@@ -18,13 +19,32 @@
     "battery",
     "custom/power"
   ],
-
-  "bluetooth": {
-    "format": "{icon}",
+  "memory": {
+    "interval": 30,
+    "format": "󰍛 {used:0.1f} GB",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}G/{total:0.1f}G RAM\n{swapUsed}G/{swapTotal:0.1f}G SWAP",
     "format-icons": {
-      "enabled": "",
-      "disabled": ""
+      "default": "󰍛"
+    },
+    "on-click": "kitty -e htop"
+  },
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     }
+  },
+  "bluetooth": {
+    "format": "{status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
 
   "battery": {
@@ -34,7 +54,7 @@
       "critical": 15
     },
     "format": "{icon} {capacity}% {time} ",
-    "format-icons": ["󰂎","󰁺", "󰁻", "󰁼", "󰁽", "󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "max-length": 25
   },
 
@@ -48,18 +68,48 @@
   },
 
   "mpris": {
-    "player": "spotify",
-    "dynamic-order": ["artist", "title"],
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{status_icon} <i>{dynamic}</i>",
-    "status-icons": {
-      "paused": ""
+  "format": "{player_icon} {dynamic}",
+  "format-paused": "{status_icon} <i>{dynamic}</i>",
+  "player-icons": {
+    "default": "▶️",
+    "mpv": "🎵",
+    "spotify": "✳️",
+    "vlc": "📹",
+    "rhythmbox": "🎶",
     },
-    "player-icons": {
-      "default": ""
-    }
+  "status-icons": {
+    "paused": "⏸️"
   },
-
+  "max-length": 25,
+  "on-click": "playerctl play-pause",
+  "on-click-right": "playerctl next",
+  "on-click-middle": "playerctl previous",
+  "on-scroll-up": "playerctl volume +5%",
+  "on-scroll-down": "playerctl volume -5%",
+},
+"cava": {
+     "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "framerate": 30,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    }
+,
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{id}",
@@ -108,24 +158,9 @@
   },
 
   "clock": {
-    "format": "{:%a, %B %d, %Y (%R)}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    },
-    "actions": {
-      "on-click-right": "mode"
-    }
+    "format": "🕔 {:%I:%M %p}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %B %d, %Y}"
   },
 
   "pulseaudio": {
@@ -169,7 +204,7 @@
   "custom/power": {
     "tooltip": false,
     "on-click": "wlogout -p layer-shell &",
-    "format": "⏻"
+    "format": "⭕"
   },
 
   "custom/notification": {
