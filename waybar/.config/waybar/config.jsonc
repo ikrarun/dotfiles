@@ -132,8 +132,8 @@
     "format": "{icon}{volume}%",
     "format-muted": "<span style='color:#ff5555;'>🔇 muted</span>",
     "format-icons": {
-      "headphone": "🎧",
-      "default": ["🔈", "🔉", "🔊", "📢"]
+      "headphone": "",
+      "default": [" ", " ", " ", " "]
     },
     "on-click": "pavucontrol",
     "scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",

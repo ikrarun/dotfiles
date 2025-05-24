@@ -1,5 +1,5 @@
 * {
-  font-family: "FiraCode Nerd Font";
+  font-family: "NotoSans Nerd Font Regular";
   font-size: 1rem;
   font-weight: 600;
   min-height: 0;
@@ -8,7 +8,7 @@
 /* Remove unnecessary margins/paddings */
 window#waybar {
   background-color: rgba(0, 0, 0, 0.226);
-  color: black;
+  color: white;
 
 }
 
