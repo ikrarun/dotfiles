@@ -2,9 +2,9 @@
 
 * {
   font-family: "MesloLGS Nerd Font Mono Bold, 'Fira Code', 'Droid Sans Mono', 'Noto Color Emoji'";
-  font-size: 16px;
+  font-size: 14px;
   min-height: 0;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 window#waybar {
@@ -52,6 +52,11 @@ button:hover {
 
 #workspaces button.urgent {
   background-color: #eb4d4b;
+}
+
+#window {
+  padding: 0 8px;
+  color: @overlay0;
 }
 
 #pulseaudio,
@@ -115,7 +120,6 @@ button:hover {
   border-bottom: 2px solid @green;
 }
 
-
 #memory {
   color: @green;
   border-bottom: 2px solid @green;
@@ -137,4 +141,3 @@ button:hover {
   padding-left: 6px;
   padding-right: 6px;
 }
-
