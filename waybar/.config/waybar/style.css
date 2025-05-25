@@ -1,76 +1,140 @@
+@import "mocha.css";
+
 * {
-  font-family:"JetBrainsMono Nerd Font, 'Fira Code Nerd Font', 'Droid Sans Mono', 'Noto Color Emoji'";
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: "MesloLGS Nerd Font Mono Bold, 'Fira Code', 'Droid Sans Mono', 'Noto Color Emoji'";
+  font-size: 16px;
   min-height: 0;
+  font-weight: bold;
 }
 
-/* Remove unnecessary margins/paddings */
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.226);
-  color: white;
-
+  background: transparent;
+  background-color: @crust;
+  color: @overlay0;
+  transition-property: background-color;
+  transition-duration: 0.1s;
+  border-bottom: 1px solid @overlay1;
 }
 
-/* Workspaces button */
-#workspaces button {
-  border-radius: 0; /* Remove rounded corners */
-  background-color: transparent;
-  color: #1e1e2e;
+#window {
+  margin: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-/* Hover state for workspaces */
-#workspaces button:hover {
-  color: #1e1e2e;
-}
-
-/* Active workspace state */
-#workspaces button.active {
-  background-color: rgba(186, 155, 171, 0.8);
-  color: rgb(65, 58, 58)
-}
-
-/* Urgent workspace state */
-#workspaces button.urgent {
-  background-color: #1e1e2e;
-}
-
-/* Other modules */
-#clock,
-#pulseaudio,
-#custom-logo,
-#custom-power,
-#custom-spotify,
-#custom-notification,
-#cpu,
-#tray,
-#memory,
-#window,
-#mpris {
-  padding: 0.3rem 0.6rem;
-  margin: 0.4rem 0.25rem;
-  background-color: transparent;
-}
-
-#custom-power {
-  color: #e40303;
-  margin-right: 10px;
-}
-
-/* Tooltip styling */
-tooltip {
-  background-color: rgba(4, 4, 4, 0.792);
-  color: wheat;
-}
-
-/* Button styling for individual modules */
 button {
-  background-color: transparent;
+  box-shadow: inset 0 -3px transparent;
   border: none;
-  box-shadow: none;
+  border-radius: 0;
 }
 
-/* Hover effect for buttons */
 button:hover {
-  background-color: rgba(255, 255, 255, 0.793); /* Subtle hover effect */
+  background: inherit;
+  color: @mauve;
+  border-top: 2px solid @mauve;
 }
+
+#workspaces button {
+  padding: 0 4px;
+}
+
+#workspaces button.focused {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: @rosewater;
+  border-top: 2px solid @rosewater;
+}
+
+#workspaces button.active {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: @mauve;
+  border-top: 2px solid @mauve;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#pulseaudio,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#wireplumber,
+#bluetooth,
+#tray,
+#network,
+#mode,
+#scratchpad {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#clock {
+  color: @maroon;
+  border-bottom: 2px solid @maroon;
+}
+
+#clock.date {
+  color: @mauve;
+  border-bottom: 2px solid @mauve;
+}
+
+#pulseaudio {
+  color: @blue;
+  border-bottom: 2px solid @blue;
+}
+
+#network {
+  color: @yellow;
+  border-bottom: 2px solid @yellow;
+}
+
+#bluetooth {
+  color: @sapphire;
+  border-bottom: 2px solid @sapphire;
+}
+
+#idle_inhibitor {
+  margin-right: 12px;
+  color: #7cb342;
+}
+
+#idle_inhibitor.activated {
+  color: @red;
+}
+
+#battery {
+  color: @green;
+  border-bottom: 2px solid @green;
+}
+
+
+#memory {
+  color: @green;
+  border-bottom: 2px solid @green;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#custom-vpn {
+  color: @lavender;
+  border-radius: 15px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+

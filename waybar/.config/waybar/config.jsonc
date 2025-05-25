@@ -1,223 +1,75 @@
 {
-  "layer": "bottom",
   "position": "top",
-  "height": 20,
-  "spacing": 2,
-  "exclusive": true,
-  "passthrough": false,
-  "fixed-center": true,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["cava","idle_inhibitor", "mpris", "clock", "memory"],
-  "modules-right": [
-    "privacy",
-    "bluetooth",
-    "pulseaudio",
-    "microphone",
-    "brightness",
-    "tray",
-    "custom/notification",
-    "battery",
-    "custom/power"
-  ],
-  "memory": {
-    "interval": 30,
-    "format": "󰍛 {used:0.1f} GB",
-    "tooltip": true,
-    "tooltip-format": "{used:0.1f}G/{total:0.1f}G RAM\n{swapUsed}G/{swapTotal:0.1f}G SWAP",
-    "format-icons": {
-      "default": "󰍛"
-    },
-    "on-click": "kitty -e htop"
-  },
-  "idle_inhibitor": {
-    "format": "{icon} ",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-  "bluetooth": {
-    "format": "{status}",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-  },
-
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}% {time} ",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "max-length": 25
-  },
-
-  "custom/spotify": {
-    "format": " { }",
-    "return-type": "json",
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "spotifatius toggle-liked",
-    "on-click-middle": "playerctl -p spotify next",
-    "exec": "spotifatius monitor"
-  },
-
-  "mpris": {
-  "format": "{player_icon} {dynamic}",
-  "format-paused": "{status_icon} <i>{dynamic}</i>",
-  "player-icons": {
-    "default": "▶️",
-    "mpv": "🎵",
-    "spotify": "✳️",
-    "vlc": "📹",
-    "rhythmbox": "🎶",
-    },
-  "status-icons": {
-    "paused": "⏸️"
-  },
-  "max-length": 25,
-  "on-click": "playerctl play-pause",
-  "on-click-right": "playerctl next",
-  "on-click-middle": "playerctl previous",
-  "on-scroll-up": "playerctl volume +5%",
-  "on-scroll-down": "playerctl volume -5%",
-},
-"cava": {
-     "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
-        "framerate": 30,
-        "autosens": 1,
-        "sensitivity": 100,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 10000,
-        "method": "pulse",
-        "source": "auto",
-        "stereo": true,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "actions": {
-                   "on-click-right": "mode"
-                   }
-    }
-,
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format": "{id}",
-    "all-outputs": true,
-    "disable-scroll": false,
-    "active-only": false,
-    "show-special": true,
-    "special-visible-only": true
+  "modules-center": ["clock"],
+  "modules-right": ["bluetooth", "memory", "network", "pulseaudio", "battery"],
+  "clock": {
+    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
   "hyprland/window": {
     "format": "{title}",
-    "icon-size": 12,
+    "icon":true,
+    "separate-outputs": true,
     "max-length": 30,
-    "rewrite": {
-      ".* - Mozilla Firefox": "Firefox",
-      ".* - Google Chrome": "Chrome",
-      ".* - Chromium": "Chromium",
-      ".* - YouTube.*": "YouTube",
-      ".* - Gmail.*": "Gmail",
-      ".* - ChatGPT.*": "ChatGPT",
-      ".* - Google Drive.*": "Drive",
-      ".* - Google Docs.*": "Docs",
-      ".* - Google Calendar.*": "Calendar",
-      ".* - Stack Overflow.*": "StackOverflow",
-      ".* - Reddit.*": "Reddit",
-      ".* - Twitter.*": "Twitter",
-      ".* - Facebook.*": "Facebook",
-      ".* - Visual Studio Code": "VS Code",
-      ".* - Spotify.*": "Spotify",
-      ".* - Discord.*": "Discord",
-      ".* - Slack.*": "Slack",
-      ".* - Terminal.*": "Terminal",
-      ".* - Alacritty.*": "Terminal",
-      ".* - Thunderbird.*": "Mail",
-      ".* - LibreOffice Writer.*": "LibreWriter",
-      ".*Hyprland.*": "Hyprland",
-      ".*Waybar.*": "Waybar",
-      "^(.*?) - .*": "$1"
-    }
   },
 
-  "tray": {
-    "show-passive-items": true,
-    "spacing": 5
-  },
-
-  "clock": {
-    "format": "🕔 {:%I:%M %p}",
+  "memory": {
+    "format": "<span size='13000' foreground='#f5c2e7'> </span>󰍛  {used} / {total} ({percentage}%)",
+    "format-icons": ["", "󰋊", ""],
     "tooltip": true,
-    "tooltip-format": "{:%A, %B %d, %Y}"
+    "tooltip-format": "{used} / {total} ({percentage}%)\n{swap_used} / {swap_total} ({swap_percentage}%)",
+    "on-click": "gnome-system-monitor"
   },
 
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {device_alias}",
+
+    "format-connected-battery": " {device_alias} - {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "blueman-manager"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{time}",
+    "on-click-right": "wlogout"
+  },
+  "network": {
+    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
+    "on-click": "nm-connection-editor"
+  },
   "pulseaudio": {
-    "format": "{icon}{volume}%",
-    "format-muted": "<span style='color:#ff5555;'>🔇 muted</span>",
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
     "format-icons": {
-      "headphone": "",
-      "default": [" ", " ", " ", " "]
+      "default": ["", "", " "]
     },
-    "on-click": "pavucontrol",
-    "scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    "on-click": "pavucontrol"
   },
-
-  "microphone": {
-    "format": "{icon}",
-    "format-muted": "<span style='color:#ff5555;'>🔇</span>",
-    "format-icons": {
-      "muted": "🔇",
-      "default": "🎤"
-    },
-    "on-click": "~/.config/waybar/scripts/mic-toggle.sh"
-  },
-
-  "brightness": {
-    "format": "{icon} {percentage}%",
-    "format-icons": {
-      "default": "☀️"
-    },
-    "on-click": "brightnessctl set 10%+",
-    "on-click-right": "brightnessctl set 10%-",
-    "scroll-up": "brightnessctl set +5%",
-    "scroll-down": "brightnessctl set 5%-"
-  },
-
-  "custom/sep": {
-    "format": "|",
-    "tooltip": false
-  },
-
-  "custom/power": {
-    "tooltip": false,
-    "on-click": "wlogout -p layer-shell &",
-    "format": "⭕"
-  },
-
-  "custom/notification": {
-    "escape": true,
-    "exec": "swaync-client -swb",
-    "exec-if": "which swaync-client",
-    "format": "{icon}",
-    "format-icons": {
-      "none": "󰅺",
-      "notification": "󰡟"
-    },
-    "on-click": "sleep 0.1 && swaync-client -t -sw",
-    "return-type": "json",
-    "tooltip": false
+  "tray": {
+    "icon-size": 22,
+    "max-length": 20,
+    "tooltip": true
   }
 }
