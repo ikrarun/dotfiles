@@ -9,7 +9,7 @@
 
 window#waybar {
   background: transparent;
-  background-color: @crust;
+  background-color: rgba(0, 0, 0, 0.658);
   color: @overlay0;
   transition-property: background-color;
   transition-duration: 0.1s;
@@ -64,6 +64,7 @@ button:hover {
 #battery,
 #cpu,
 #memory,
+#privacy,
 #disk,
 #temperature,
 #backlight,
@@ -97,6 +98,12 @@ button:hover {
 }
 
 #network {
+  color: @yellow;
+  border-bottom: 2px solid @yellow;
+}
+
+
+#privacy {
   color: @yellow;
   border-bottom: 2px solid @yellow;
 }

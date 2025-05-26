@@ -1,7 +1,7 @@
 {
   "position": "top",
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "privacy"],
   "modules-right": ["bluetooth", "memory", "network", "pulseaudio", "battery"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
@@ -10,11 +10,33 @@
 
   "hyprland/window": {
     "format": "{title}",
-    "icon":true,
+    "icon": false,
     "separate-outputs": true,
-    "max-length": 30,
+    "max-length": 30
   },
 
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 12,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 16
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 16
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 16
+      }
+    ]
+  },
   "memory": {
     "format": "<span size='13000' foreground='#f5c2e7'> </span>󰍛  {used} / {total} ({percentage}%)",
     "format-icons": ["", "󰋊", ""],

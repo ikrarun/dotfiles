@@ -6,6 +6,4 @@ end
 set PATH $PATH /home/arun/.local/bin
 
 
-if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
-    exec Hyprland
-end
+
