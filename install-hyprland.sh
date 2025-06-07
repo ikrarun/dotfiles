@@ -12,23 +12,16 @@ cd paru && makepkg -si --noconfirm
 
 echo "🌿 Installing Hyprland stack..."
 paru -S --noconfirm hyprland hyprpaper swaync waybar dunst \
-  ghostty rofi network-manager-applet \
-  pulseaudio pulseaudio-alsa pavucontrol \
+  ghostty rofi nemo network-manager-applet \
+  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pavucontrol \
   xdg-desktop-portal-hyprland qt5-wayland qt6-wayland \
   wl-clipboard xwayland ttf-jetbrains-mono-nerd \
   fish starship neofetch btop unzip jq \
   firefox vlc obs-studio chezmoi nix
 
-echo "🖼️ Setting wallpaper using hyprpaper..."
-mkdir -p ~/.config/hypr
-cat <<EOF > ~/.config/hypr/hyprpaper.conf
-preload = ~/Pictures/wallpapers/mywall.jpg
-wallpaper = ,~/Pictures/wallpapers/mywall.jpg
-EOF
 
-echo "🔔 Enabling swaync notification daemon..."
-mkdir -p ~/.config/swaync
-swaync & disown  # you may want to autostart this in your dotfiles
+
+
 
 echo "🔐 Installing and enabling 'ly' login manager..."
 paru -S --noconfirm ly
